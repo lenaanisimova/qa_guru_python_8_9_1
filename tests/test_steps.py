@@ -25,7 +25,7 @@ def test_dynamic_steps():
         s(by.partial_text("#76")).should(be.visible)
 
 
-def test_decorator_steps():
+def test_steps():
     open_main_page()
     search_for_repository("eroshenkoam/allure-example")
     go_to_repository("eroshenkoam/allure-example")
@@ -40,9 +40,9 @@ def open_main_page():
 
 @allure.step("Ищем репозитория {repo}")
 def search_for_repository(repo):
-    s(".header-search-input").click()
-    s(".header-search-input").send_keys(repo)
-    s(".header-search-input").submit()
+    s(".header-search-button").click()
+    s("#query-builder-test").send_keys(repo)
+    s("#query-builder-test").press_enter()
 
 
 @allure.step("Переходим по ссылке репозитория {repo}")
